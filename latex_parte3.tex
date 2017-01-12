@@ -1,0 +1,308 @@
+\documentclass[brazil,14]{beamer}
+\usepackage[latin1]{inputenc}
+\usepackage{beamerthemesplit}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{fancybox}
+\usepackage{ulem}
+\usefonttheme{serif}
+\usetheme{Copenhagen}
+%\usetheme{CambridgeUS}
+%\usetheme{Malmoe}
+\setbeamertemplate{footline}[frame number]
+\newenvironment{itemizespc}{
+\begin{itemize}
+  \setlength{\itemsep}{15pt}
+}{\end{itemize}}
+\xdefinecolor{darkblue}{rgb}{0,0,0.5}
+\newcommand{\lyxline}[1][1pt]{%
+  \par\noindent%
+  \rule[.5ex]{\linewidth}{#1}\par}
+  
+
+  % -inicio codigo fonte
+\usepackage{listings}
+\lstset{
+language = [LaTeX]{TeX},
+numbers=left,
+stepnumber=1,
+firstnumber=1,
+numberstyle=\tiny,
+%extendedchars=true,
+breaklines=true,
+frame=tb,
+basicstyle=\footnotesize,
+stringstyle=\ttfamily,
+showstringspaces=false
+}
+\renewcommand{\lstlistingname}{Code}
+%\renewcommand{\lstlistlistingname}{Lista de Listagens}
+% - fim codigo fonte
+
+\begin{document}
+
+\title{Preparando documento com o LaTeX - DCC/UFLA}
+
+\begin{frame}[plain]{}
+\begin{center}
+\includegraphics[width=0.3\linewidth]{figs/ufla.png} \hspace{0.2cm}\\
+\bf{ Departamento de Ciência da Computação (DCC)}\\
+ \setbeamercolor{block body}{fg = white, bg=darkblue}
+\vspace{0.75cm}
+\begin{block}{ }
+\begin{center}
+\vspace{0.15cm}
+\Large{ {\bf Preparando documentos com o \LaTeX}}
+%Minicurso de LaTeX}}
+\vspace{0.15cm}
+\end{center}
+\end{block}
+\vspace{0.4cm}
+{\bf Vinicius Ruela Pereira Borges}\\
+{\scriptsize  \url{vinicius.borges@dcc.ufla.br} }\\
+%{\bf Aluno1, Aluno2, ..., AlunoN}\\
+%{\scriptsize  \url{vinicius.borges@dcc.ufla.br} }\\
+\vspace{0.4cm}
+{\it Parte 3}\\
+\vspace{0.25cm}
+ \end{center}
+\end{frame}
+
+
+\frame{\frametitle{Roteiro}
+\begin{itemizespc}
+\item Modularização de documentos
+\item Referências bibliográficas
+\begin{itemize}
+\item BibTeX
+\item Estilos de bibliografia
+\item Obter referências formatadas
+\end{itemize}
+\item Algoritmos
+\begin{itemize}
+\item Pacote Algorithm
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Modularização de documentos}
+\begin{itemizespc}
+\item Documentos muito grandes podem ser difíceis de manusear
+\item {\bf Solução:} dividir o arquivo ``principal'' \LaTeX\ em arquivos menores
+\item Ideia é semelhante comparada à modularização na linguagem C por exemplo
+\begin{itemize}
+\item Dividir o conteúdo do arquivo .tex principal e incluí-los em arquivos .tex
+\item Utilizar o comando $\backslash {\tt include} \{ \textrm{nome do arquivo sem o .tex} \}$ para incluir cada arquivo .tex
+\item Cada arquivo .tex é incluído após $\backslash {\tt begin}\{ {\tt document }\}$
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Modularização de documentos}
+\begin{itemizespc}
+\item Cada arquivo .tex gerado a ser incluído no arquivo \LaTeX\ principal:
+\begin{itemize}
+\item Não pode conter os comandos que aparecem no preâmbulo
+\item Não podem conter $\backslash {\tt begin}\{ {\tt document }\}$ e $\backslash {\tt end}\{ {\tt document }\}$
+\end{itemize}
+\item {\bf Sugestão:} separar cada capítulo (ou seção) do documento em um arquivo .tex
+\item Variações em relação ao $\backslash {\tt include}$
+\begin{itemize}
+\item $\backslash {\tt input}$: não inicia o conteúdo do arquivo em uma nova página
+\item $\backslash {\tt includeonly}\{ arquivo1,arquivo2,...,arquivo_N\}$
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Modularização de documentos}
+\begin{itemizespc}
+\item Cada arquivo .tex gerado a ser incluído no arquivo \LaTeX\ principal:
+\lstinputlisting{codes/modularizacao.tex}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Bibliografia (BibTeX)}
+\begin{itemizespc}
+\item BibTeX é uma ferramenta de formatação de bibliografias usada em documentos LaTeX
+\item Ideia básica:
+\begin{itemize}
+\item Criar um arquivo de bibliografias com formato .bib 
+\item Inserir as referências bibliográficas formatadas
+\item Incluir o comando $\backslash \mathtt{bibliographystyle}\{estilo\}$ no preâmbulo do documento
+\item Inserir o comando $\backslash \mathtt{bibliography}\{ \textrm{arquivo sem .bib} \}$ no local adequado dentro de $\backslash \mathtt{begin}\{ \textrm{document} \}$
+\item Compilar o arquivo principal do Latex e em seguida compilar o arquivo .bib
+\item Recompilar o arquivo principal do Latex
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Bibliografia (BibTeX)}
+\begin{itemizespc}
+\item No comando $\backslash \mathtt{bibliographystyle}\{estilo\}$, estilo pode ser escolhido como:
+\begin{itemize}
+\item {\tt plain}: Estilo de bibliografia mais utilizado. As referências são colocadas em ordem alfabética
+\end{itemize}
+\begin{figure}
+\includegraphics[scale=0.4]{figs/plain.png}
+\end{figure}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Bibliografia (BibTeX)}
+\begin{itemizespc}
+\item No comando $\backslash \mathtt{bibliographystyle}\{estilo\}$, estilo pode ser escolhido como:
+\begin{itemize}
+\item {\tt plain}: Estilo de bibliografia mais utilizado. As referências são colocadas em ordem alfabética
+\item {\tt unsrt}: As referências aparecem na ordem de citação no texto
+\end{itemize}
+\begin{figure}
+\includegraphics[scale=0.3]{figs/unsrt.png}
+\end{figure}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Bibliografia (BibTeX)}
+\begin{itemizespc}
+\item No comando $\backslash \mathtt{bibliographystyle}\{estilo\}$, estilo pode ser escolhido como:
+\begin{itemize}
+\item {\tt plain}: Estilo de bibliografia mais utilizado. As referências são colocadas em ordem alfabética
+\item {\tt unsrt}: As referências aparecem na ordem de citação no texto
+\item {\tt abbrv}: Abrevia os nomes na citação no texto
+\end{itemize}
+\begin{figure}
+\includegraphics[scale=0.3]{figs/abbrv.png}
+\end{figure}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Bibliografia (BibTeX)}
+\begin{itemizespc}
+\item Formato geral de uma referência do tipo {\tt inproceedings}:
+\begin{flushleft}
+   $@$ {\tt inproceedings}\{identificador da referência,\\
+   $\quad$ {\tt title}=\{ título do trabalho \},\\
+   $\quad$ {\tt author}=\{ autores (cada um separado por {\it and}) \},\\
+   $\quad$ {\tt booktitle}=\{ nome da conferência \},\\
+   $\quad$ {\tt pages}=\{ página inicial - - página final \},\\
+   $\quad$ {\tt year}=\{ ano \} \\
+\}
+\end{flushleft}
+\item Existem outros campos opcionais, como {\tt organization} etc.
+\end{itemizespc}
+}
+
+\frame{\frametitle{Bibliografia (BibTeX)}
+\begin{itemizespc}
+\item Formato geral de uma referência do tipo {\tt article}:
+\begin{flushleft}
+   $@$ {\tt article}\{identificador da referência,\\
+   $\quad$ {\tt title}=\{ título do trabalho \},\\
+   $\quad$ {\tt author}=\{ autores (cada um separado por {\it and}) \},\\
+   $\quad$ {\tt journal}=\{ nome do periódico \},\\
+   $\quad$ {\tt volume}=\{ volume \},\\
+   $\quad$ {\tt pages}=\{ página inicial - - página final \},\\
+   $\quad$ {\tt year}=\{ ano \} \\
+\}
+\end{flushleft}
+\item Existem outros campos opcionais, como {\tt number}, {\tt publisher} etc.
+\end{itemizespc}
+}
+
+\frame{\frametitle{Bibliografia (BibTeX)}
+\begin{itemizespc}
+\item Formato geral de uma referência do tipo {\tt book}:
+\begin{flushleft}
+   $@$ {\tt book}\{identificador da referência,\\
+   $\quad$ {\tt title}=\{ título do trabalho \},\\
+   $\quad$ {\tt author}=\{ autores (cada um separado por {\it and}) \},\\
+   $\quad$ {\tt publisher}=\{ editora \},\\
+   $\quad$ {\tt edition}=\{ edição \},\\
+   $\quad$ {\tt year}=\{ ano \} \\
+\}
+\end{flushleft}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Bibliografia (BibTeX)}
+\begin{itemizespc}
+\item Outros tipos
+\begin{itemize}
+\item {\tt inbook}: parte de um livro
+\item {\tt incollection}: parte de um livro que possui título próprio
+\item {\tt manual}: documento técnico
+\item {\tt mastersthesis}: dissertação de mestrado
+\item {\tt phdthesis}: tese de doutorado
+\item {\tt misc}: a referência não se encaixa em nenhuma das opções anteriores
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Bibliografia (BibTeX)}
+\begin{itemizespc}
+\item O comando $\backslash \mathtt{cite}\{\textrm{identificador da referência}\}$ é inserido no texto para referenciar uma bibliografia
+\item Para isso, considera-se o ``identificador de referência'' da bibliografia inserida no arquivo .bib 
+\item É preciso citar no texto uma referência para que esta apareça na bibliografia do documento
+\end{itemizespc}
+}
+
+\frame{\frametitle{Bibliografia (BibTeX)}
+\begin{itemizespc}
+\item O comando $\backslash \mathtt{cite}\{\textrm{identificador da referência}\}$ é inserido no texto para referenciar uma bibliografia
+\lstinputlisting{codes/bibliografia.tex}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Bibliografia (BibTeX)}
+\begin{itemizespc}
+\item Como obter referências bibliográficas já prontas?
+\begin{itemize}
+\item Google Scholar
+\end{itemize}
+\begin{figure}
+\includegraphics[scale=0.25]{figs/scholar.png}
+\end{figure}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Bibliografia (BibTeX)}
+\begin{itemizespc}
+\item Como obter referências bibliográficas já prontas?
+\begin{itemize}
+\item Mendeley
+\end{itemize}
+\begin{figure}
+\includegraphics[scale=0.4]{figs/mendeley.png}
+\end{figure}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Algoritmos}
+\begin{itemizespc}
+\item É possível incluir blocos que descrevem algoritmos em pseudo-código em um documento \LaTeX
+\item Existem vários pacotes e o {\tt algorithm2e} é bastante popular
+\begin{itemize}
+\item Incluir o pacote no preâmbulo: $\backslash \mathtt{usepackage}[]\backslash\{\mathtt{algorithm2e}\}$
+\end{itemize}
+\item O ambiente é denominado $\backslash \mathtt{begin}\{ \mathtt{algorithm} \}$ ... $\backslash \mathtt{end}\{ \mathtt{algorithm} \}$
+\end{itemizespc}
+}
+
+\frame{\frametitle{Algoritmos}
+\begin{itemizespc}
+\item Exemplo:
+\lstinputlisting{codes/algoritmo.tex}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Algoritmos}
+\begin{itemizespc}
+\item Resultado:
+\begin{figure}
+\includegraphics[scale=0.6]{figs/algo.png}
+\end{figure}
+\end{itemizespc}
+}
+
+\end{document}

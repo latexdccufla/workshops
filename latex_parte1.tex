@@ -1,0 +1,801 @@
+\documentclass[brazil,14]{beamer}
+\usepackage[latin1]{inputenc}
+\usepackage{beamerthemesplit}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{fancybox}
+\usepackage{ulem}
+\usefonttheme{serif}
+\usetheme{Copenhagen}
+%\usetheme{CambridgeUS}
+%\usetheme{Malmoe}
+\setbeamertemplate{footline}[frame number]
+\newenvironment{itemizespc}{
+\begin{itemize}
+  \setlength{\itemsep}{15pt}
+}{\end{itemize}}
+\xdefinecolor{darkblue}{rgb}{0,0,0.5}
+\newcommand{\lyxline}[1][1pt]{%
+  \par\noindent%
+  \rule[.5ex]{\linewidth}{#1}\par}
+  
+
+  % -inicio codigo fonte
+\usepackage{listings}
+\lstset{
+language = [LaTeX]{TeX},
+numbers=left,
+stepnumber=1,
+firstnumber=1,
+numberstyle=\tiny,
+%extendedchars=true,
+breaklines=true,
+frame=tb,
+basicstyle=\footnotesize,
+stringstyle=\ttfamily,
+showstringspaces=false
+}
+\renewcommand{\lstlistingname}{Code}
+%\renewcommand{\lstlistlistingname}{Lista de Listagens}
+% - fim codigo fonte
+
+\begin{document}
+
+\title{Preparando documento com o LaTeX - DCC/UFLA}
+
+\begin{frame}[plain]{}
+\begin{center}
+\includegraphics[width=0.3\linewidth]{figs/ufla.png} \hspace{0.2cm}\\
+\bf{ Departamento de Ciência da Computação (DCC)}\\
+ \setbeamercolor{block body}{fg = white, bg=darkblue}
+\vspace{0.75cm}
+\begin{block}{ }
+\begin{center}
+\vspace{0.15cm}
+\Large{ {\bf Preparando documentos com o \LaTeX}}
+%Minicurso de LaTeX}}
+\vspace{0.15cm}
+\end{center}
+\end{block}
+\vspace{0.4cm}
+{\bf Vinicius Ruela Pereira Borges}\\
+{\scriptsize  \url{vinicius.borges@dcc.ufla.br} }\\
+%{\bf Aluno1, Aluno2, ..., AlunoN}\\
+%{\scriptsize  \url{vinicius.borges@dcc.ufla.br} }\\
+\vspace{0.4cm}
+{\it Parte 1}\\
+\vspace{0.25cm}
+ \end{center}
+\end{frame}
+
+
+\frame{\frametitle{Roteiro}
+\begin{itemizespc}
+\item Introdução
+\begin{itemize}
+\item Por que \LaTeX?
+\item \TeX\  ou \LaTeX?
+\item Um pouco de história
+\item Ferramentas (Livres)
+\end{itemize}
+\item Documentos de texto
+\begin{itemize}
+\item Estrutura básica
+\item Estilos
+\item Pacotes
+\item Comandos básicos
+\end{itemize}
+\end{itemizespc}
+}
+
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item Considere os processadores de texto WYSIWYG
+\end{itemizespc}
+}
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item Considere os processadores de texto WYSIWYG\\
+\vspace{0.5cm}
+\begin{center}
+{\bf W}hat {\bf y}ou {\bf s}ee {\bf i}s {\bf w}hat {\bf y}ou {\bf g}et
+\end{center}
+\vspace{0.5cm}
+\item São aqueles processadores de texto baseados em formatações diretas no texto
+\end{itemizespc}
+}
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item Microsoft Word
+\begin{figure}
+\includegraphics[scale=0.2]{figs/word.png}
+\end{figure}
+{\tiny \url{https://upload.wikimedia.org/wikipedia/commons/a/af/LibreOffice_Writer_3_3_2_en.png}}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item LibreOffice Writer
+\begin{figure}
+\includegraphics[scale=0.25]{figs/librewriter.png}
+\end{figure}
+{\tiny \url{https://upload.wikimedia.org/wikipedia/commons/a/af/LibreOffice_Writer_3_3_2_en.png}}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item \LaTeX\ pode aparentar ser complexo e não ser nada amigável
+\item Por que utilizar uma ferramenta complexa e poderosa ao invés de algo mais amigável?
+\begin{figure}
+\includegraphics[scale=0.2]{figs/fofo.png} \hspace{1cm}
+\includegraphics[scale=0.2]{figs/maromba.png}
+\end{figure}
+\end{itemizespc}
+}
+
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item Complexidade
+\begin{figure}
+\includegraphics[scale=0.25]{figs/complexity.png}
+\end{figure}
+{\tiny Adaptado de\\ \url{http://mappingignorance.org/fx/media/2015/04/word_vs_latex_1_eng.png}}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item Formatação de seções, links e referências é quase automática!
+\begin{figure}
+\includegraphics[scale=0.3]{figs/sections.png} \hspace{0.2cm}
+\includegraphics[scale=0.3]{figs/references.png}
+\end{figure}
+{\tiny Baixado em\\ \url{http://i.stack.imgur.com/KUvxh.png}}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item Padrão de geração das fórmulas matemáticas
+\begin{figure}
+\includegraphics[scale=0.15]{figs/wordmath.png}
+\end{figure}
+{\tiny Baixado em\\ \url{https://i.ytimg.com/vi/BSbN0fMQ7HE/maxresdefault.jpg}}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item Microsoft Word apresenta diversos bugs...
+\begin{figure}
+\includegraphics[scale=0.4]{figs/bugword.png}
+\end{figure}
+{\tiny Adaptado de\\ \url{http://www.webtop.com.au/upload/image/site/data/microsoft_word_error_in_thunderbird_gmail_imap.jpg}}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item Não há incompatibilidade considerando diferentes versões
+\item Facilidade em gerenciar referências bibliográficas
+\item Documentos em \LaTeX\ são pequenos e rápidos
+\item Fácil adaptação em ferramentas colaborativas
+\item Arquivo PDF pode ser gerado automaticamente
+\end{itemizespc}
+}
+
+\frame{\frametitle{\LaTeX}
+\begin{itemizespc}
+\item Seu uso é bastante popular no meio acadêmico
+\begin{itemizespc}
+\item Cartas
+\item Documentos (Declarações)
+\item Relatórios
+\item Artigos científicos
+\item Apresentações
+\end{itemizespc}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item Desculpas ``esfarrapadas'' para não usar \LaTeX
+\begin{enumerate}
+\item ``Não tenho tempo para aprender \LaTeX''
+\end{enumerate}
+\begin{figure}
+\includegraphics[scale=0.2]{figs/ui.png}
+\end{figure}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item Desculpas ``esfarrapadas'' para não usar \LaTeX
+\begin{enumerate}
+\item ``Não tenho tempo para aprender \LaTeX''
+\item ``Esses códigos no meio do texto são muito complicados!''
+\end{enumerate}
+\begin{figure}
+\includegraphics[scale=0.4]{figs/latexexample.png}
+\end{figure}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item Desculpas ``esfarrapadas'' para não usar \LaTeX
+\begin{enumerate}
+\item ``Não tenho tempo para aprender \LaTeX''
+\item ``Esses códigos no meio do texto são muito complicados!''
+\item ``Depois de formado, nunca mais usarei isso (nem Prolog, nem Assembly, nem Cálculo...).''
+\end{enumerate}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item Desculpas ``esfarrapadas'' para não usar \LaTeX
+\begin{enumerate}
+\item ``Não tenho tempo para aprender \LaTeX''
+\item ``Esses códigos no meio do texto são muito complicados!''
+\item ``Depois de formado, nunca mais usarei isso (nem Prolog, nem Assembly, nem Cálculo...).''
+\item ``Consigo fazer tudo isso no Word.''
+\end{enumerate}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Por que \LaTeX?}
+\begin{itemizespc}
+\item Desculpas ``esfarrapadas'' para não usar \LaTeX
+\begin{enumerate}
+\item ``Não tenho tempo para aprender \LaTeX''
+\item ``Esses códigos no meio do texto são muito complicados!''
+\item ``Depois de formado, nunca mais usarei isso (nem Prolog, nem Assembly, nem Cálculo...).''
+\item ``Consigo fazer tudo isso no Word.''
+\item ``Ninguém pode me ajudar e nem sei por onde começar.''
+\end{enumerate}
+\end{itemizespc}
+}
+
+
+\frame{\frametitle{\LaTeX}
+\begin{itemizespc}
+\item O \LaTeX\ (Lamport Tex) é um processador de textos de alta qualidade tipográfica conforme ``marcações'' encontradas no texto
+\item As ``marcações'' indicam como o texto deve ser formatado no que se refere a negrito, sublinhado, parágrafo, seções etc.
+\item \LaTeX\ é software livre, sendo distribuído com a licença {\it LaTeX Project Public License} (LPPL)
+\end{itemizespc}
+}
+
+\frame{\frametitle{\TeX}
+\begin{itemizespc}
+\item O \LaTeX\ faz uso dos recursos tipográficos de outro programa conhecido como \TeX, que é um sistema tipográfico
+\item \TeX\ foi concebido com o objetivo de:
+\begin{itemize}
+\item permitir a preparação de documentos com alta qualidade tipográfica utilizando o mínimo de esforço
+\item fornecer um sistema que produza documentos idênticos em todos os computadores, a qualquer momento
+\end{itemize}
+\item \TeX\ também é software livre, cuja versão mais atual é $3.14159265$ (01/12/2014)
+\end{itemizespc}
+%\begin{figure}
+%\includegraphics[scale=0.4]{figs/knuth.png}
+%\end{figure}
+}
+
+\frame{\frametitle{\LaTeX vs \TeX}
+\begin{itemizespc}
+\item \LaTeX\ é um conjunto padrão de macros implementados utilizando o \TeX
+\begin{itemize}
+\item permite um aumento da produtividade com o uso desse processador
+\end{itemize}
+\item Resumidamente:
+\begin{itemize}
+\item \LaTeX\ está mais relacionado com a manipulação do conteúdo (texto) juntamente com as marcações, tarefa feita pelo escritor
+\item \TeX\ está mais relacionado com as funcionalidades que fornecem o layout, tarefa feita pelo tipógrafo
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Um pouco de história}
+\begin{itemizespc}
+\item Nos anos 70, um professor da Universidade de Stanford, chamado Donald E. Knuth, estava escrevendo um livro sobre programação
+\end{itemizespc}
+\begin{figure}
+\includegraphics[scale=0.4]{figs/knuth.png}
+\end{figure}
+}
+
+\frame{\frametitle{Um pouco de história}
+\begin{itemizespc}
+\item O livro em questão era ``A arte de programação do computador'', que após finalizado, foi enviado à editora para impressão
+\item A editora contratada enviou uma versão impressa do livro para Knuth, que ficou insatisfeito com sua baixa qualidade
+\item Isso motivou Knuth a implementar um programa de editoração, o \TeX!
+\end{itemizespc}
+}
+
+\frame{\frametitle{Um pouco de história}
+\begin{itemizespc}
+\item Os desafios de Knuth eram grandes:
+\begin{itemize}
+\item modelar as fontes (fonte padrão é denominada {\it Computer Modern})
+\item desenvolver todos os ambientes existentes em textos científicos
+\end{itemize}
+\item O primeiro protótipo do \TeX\ foi lançado em 1978, enquanto que a primeira versão estável, em 1982
+\end{itemizespc}
+}
+
+\frame{\frametitle{Um pouco de história}
+\begin{itemizespc}
+\item Escrito por Leslie Lamport no início dos anos 80 para facilitar a edição de textos utilizando o \TeX
+\item A versão atual é denominada Latex2$\varepsilon$
+\end{itemizespc}
+\begin{figure}
+\includegraphics[scale=0.35]{figs/leslie.png}
+\end{figure}
+}
+
+
+\frame{\frametitle{Ferramentas (Livres)}
+\begin{itemizespc}
+\item TexMaker
+\end{itemizespc}
+\begin{figure}
+\includegraphics[scale=0.2]{figs/texmaker.png}\\
+\tiny{ Baixado em\\
+\url{http://i1-linux.softpedia-static.com/screenshots/Texmaker_1.png}}
+\end{figure}
+}
+
+\frame{\frametitle{Ferramentas (Livres)}
+\begin{itemizespc}
+\item TeXStudio
+\end{itemizespc}
+\begin{figure}
+\includegraphics[scale=0.2]{figs/texstudio.png}\\
+\end{figure}
+}
+
+\frame{\frametitle{Ferramentas (Livres)}
+\begin{itemizespc}
+\item LyX
+\end{itemizespc}
+\begin{figure}
+\includegraphics[scale=0.4]{figs/lyx.png}\\
+\tiny{ Baixado em\\
+\url{http://www.ibm.com/developerworks/library/os-lyx/LyX_Figure3.png}}
+\end{figure}
+}
+
+\frame{\frametitle{Ferramentas (Livres)}
+\begin{itemizespc}
+\item Overleaf: plataforma colaborativa para escrita de documentos em \LaTeX
+\end{itemizespc}
+\begin{figure}
+\includegraphics[scale=0.3]{figs/overleaf.png}\\
+\tiny{ Baixado em\\
+\url{http://dickimaw-books.com/latex/admin/html/pictures/overleaf-firefox.png}}
+\end{figure}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item Os marcadores (tags) da linguagem \LaTeX\ são definidos por Todos os comandos em \LaTeX\  são definidos pelo marcador $\backslash$  
+\item A estrutura de um arquivo \LaTeX\ segue as regras/idéias de linguagens de programação:
+\begin{itemize}
+\item declarações e corpo do programa
+\item inclusão de bibliotecas
+\item regras de escopo
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item Estrutura geral de um arquivo \LaTeX:
+\lstinputlisting{codes/basics.tex}
+\item O arquivo é um documento de texto com formato {\bf .tex}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item Um arquivo \LaTeX:\\ \vspace{0.15cm}
+\begin{itemize}
+\item Sempre começam com o comando $\backslash documentclass$
+\begin{itemize}
+\item Estilo do documento: formatação das páginas, tamanho das letras, fonte etc.\\
+\end{itemize}
+\vspace{0.25cm}
+\item O comando $\backslash begin\{document\}$ ... $\backslash end\{document\}$ delimita o texto
+\begin{itemize}
+\item Texto e seus comandos de formatação\\
+\end{itemize}
+\vspace{0.25cm}
+\item O {\bf preâmbulo} é formado por comandos, que são escritos entre $\backslash documentclass$ e $\backslash begin\{document\}$
+\begin{itemize}
+\item Pacotes, re-definições de comandos etc.\\
+\end{itemize}
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item Comando $\backslash documentclass [<formatacao>] \{ article\}$: estilo do documento
+\end{itemizespc}
+\begin{columns}[T]
+\begin{column}{.4\textwidth}
+\begin{itemizespc}
+\item {\bf article}: textos pequenos, declarações etc
+%\item {\bf report}:
+%\item {\bf book}:
+\end{itemizespc}
+\end{column}
+\hfill
+\begin{column}{.5\textwidth}
+\begin{figure}
+\includegraphics[scale=0.4]{figs/article.png}
+\end{figure}
+\end{column}
+\end{columns}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item Comando $\backslash documentclass [<formatacao>] \{ report\}$: estilo do documento
+\end{itemizespc}
+\begin{columns}[T]
+\begin{column}{.4\textwidth}
+\begin{itemizespc}
+\item {\bf report}: relatórios científicos, artigos longos, monografias etc
+%\item {\bf book}:
+\end{itemizespc}
+\end{column}
+\hfill
+\begin{column}{.5\textwidth}
+\begin{figure}
+\includegraphics[scale=0.2]{figs/report.png}
+\end{figure}
+\end{column}
+\end{columns}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item Comando $\backslash documentclass [<formatacao>] \{ book\}$: estilo do documento
+\end{itemizespc}
+\begin{columns}[T]
+\begin{column}{.4\textwidth}
+\begin{itemizespc}
+\item {\bf book}: Livros
+\end{itemizespc}
+\end{column}
+\hfill
+\begin{column}{.5\textwidth}
+\begin{figure}
+\includegraphics[scale=0.25]{figs/book.png}
+\end{figure}
+\end{column}
+\end{columns}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item Comando $\backslash documentclass [<formatacao>] \{ letter\}$: estilo do documento
+\end{itemizespc}
+\begin{columns}[T]
+\begin{column}{.4\textwidth}
+\begin{itemizespc}
+\item {\bf letter}: cartas
+%\item {\bf report}:
+%\item {\bf book}:
+%\item {\bf letter}:
+\end{itemizespc}
+\end{column}
+\hfill
+\begin{column}{.5\textwidth}
+\begin{figure}
+\includegraphics[scale=0.4]{figs/letter.png}
+\end{figure}
+\end{column}
+\end{columns}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item {\bf Exemplo:} Comando $\backslash documentclass [<formatacao>] \{ieee\}$
+\end{itemizespc}
+\begin{columns}[T]
+\begin{column}{.4\textwidth}
+\begin{itemizespc}
+\item Universidades, institutos e congressos podem desenvolver seu próprio estilo
+\item ``Template'' da IEEE
+\item Disponível para download no site da IEEE
+\end{itemizespc}
+\end{column}
+\hfill
+\begin{column}{.5\textwidth}
+\begin{figure}
+\includegraphics[scale=0.22]{figs/ieee.png}
+\end{figure}
+\end{column}
+\end{columns}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item Comando $\backslash documentclass [<formatacao>] \{estilo\}$: características
+\end{itemizespc}
+\begin{columns}[T]
+\begin{column}{.35\textwidth}
+\begin{itemizespc}
+\item Tamanho da letra
+\item Por exemplo: {\bf 12pt}
+\end{itemizespc}
+\end{column}
+\hfill
+\begin{column}{.5\textwidth}
+\begin{figure}
+\includegraphics[scale=0.5]{figs/lettersize.png}
+\end{figure}
+\end{column}
+\end{columns}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item Comando $\backslash documentclasse [<formatacao>] \{estilo\}$: características
+\begin{center}
+$\backslash documentclass[12pt,]\{article\}$
+\end{center}
+\item Opções de páginas:
+\begin{itemize}
+\item oneside : imprime somente em um lado da página
+\item twoside : imprime em ambos os lados da página
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item Comando $\backslash documentclass [<formatacao>] \{estilo\}$: características
+\begin{center}
+$\backslash documentclass[12pt,oneside]\{article\}$
+\end{center}
+\item Opções de páginas:
+\begin{itemize}
+\item landscape : página na forma de paisagem
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item Comando $\backslash documentclass [<formatacao>] \{estilo\}$: características
+\begin{center}
+$\backslash documentclass[12pt,]\{article\}$
+\end{center}
+\item Número de colunas:
+\begin{itemize}
+\item onecolumn : texto em uma coluna
+\item twocolumn : texto em duas colunas
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item Comando $\backslash documentclass [<formatacao>] \{estilo\}$: características
+\begin{center}
+$\backslash documentclass[12pt,onecolumn]\{article\}$
+\end{center}
+\item Tamanho da folha:
+\begin{itemize}
+\item a4 : folha A4
+\item letterpaper : padrão de carta
+\item a5 : folha A5
+\item entre outros...
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Estrutura da Linguagem \LaTeX}
+\begin{itemizespc}
+\item Comando $\backslash documentclass$:
+\begin{center}
+$\backslash documentclass[12pt,onecolumn,a4]\{article\}$
+\end{center}
+\item {\bf Exercício:} criar um documento de texto do \LaTeX\ com o comando acima:
+\lstinputlisting{codes/exercicio_1.tex}
+Salve o arquivo com o formato {\bf .tex}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Compilando um arquivo \LaTeX}
+\begin{itemizespc}
+\item No Terminal do Linux, digite:
+\begin{flushleft}
+$\$ \quad latex <arquivo>.tex$ 
+\end{flushleft}
+\item Um arquivo .dvi (com o mesmo nome) será gerado
+\item Para convertê-lo para PDF, digite:
+\begin{flushleft}
+$\$ \quad dvips -o <arquivo>.dvi <arquivo>$ \\
+$\$ \quad ps2pdf <arquivo>.ps$ 
+\end{flushleft}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Pacotes}
+\begin{itemizespc}
+\item O usuário verificará que textos mais complexos ficam difíceis de serem escritos com os recursos básicos do \LaTeX
+\begin{itemize}
+\item Solução: incluir pacotes no preâmbulo do arquivo \LaTeX\ 
+\end{itemize}
+\item Pacotes são um conjunto de arquivos que implementam uma determinada característica adicional para os documentos escritos em \LaTeX\ 
+\item Alguns estão incluídos no código-fonte do \TeX, enquanto que outros requerem o download em repositórios públicos, como:
+\begin{itemize}
+\item \url{https://www.ctan.org/} - ``Comprehensive TEX Archive Network''
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Pacotes}
+\begin{itemizespc}
+\item Os principais pacotes são:
+\begin{itemize}
+\item {\bf graphicx:} inserir gráficos, como imagens, fotografias etc
+\item {\bf color:} utilizar cores no texto
+\item {\bf babel:} traduzir automaticamente nomes que aparecem em inglês na estrutura do documento.
+\begin{itemize}
+{\it Section} $\rightarrow$ Seção, {\it Chapter} $\rightarrow$ Capítulo
+\end{itemize}
+\item {\bf fontenc:} permite que o \LaTeX\ compreenda a acentuação feita direto pelo teclado.
+\item {\bf amsfonts:} utilização de estilos de letras para o ambiente matemático, como $\mathbb{N}$, $\mathbb{R}$ etc
+\item {\bf amssymb:} utilização de símbolos matemáticos, como $\alpha$, $\beta$ etc.
+\item {\bf float:} adequar o posicionamento de imagens
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Pacotes}
+\begin{itemizespc}
+\item A inclusão de um pacote em um arquivo .tex requer o uso do comando
+\begin{center}
+$\backslash usepackage [< opcoes >]\{ < nome-do-pacote>\}$
+\end{center}
+\item Por exemplo:
+\begin{itemize}
+\item $\backslash usepackage \{ graphicx\}$
+\end{itemize}
+\item É importante consultar na documentação do pacote as opções disponíveis! 
+\end{itemizespc}
+}
+
+\frame{\frametitle{Pacotes}
+\begin{itemizespc}
+\item {\bf Exercício:} Incluir os pacotes abaixo no arquivo \LaTeX\ criado anteriormente
+\lstinputlisting{codes/exercicio_2.tex}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Pacotes}
+\begin{itemizespc}
+\item Como verificar se é necessário a inclusão de um pacote no arquivo \LaTeX?
+\begin{itemize}
+\item No momento da compilação, o \LaTeX\ indicará algum comando que não foi reconhecido...
+\begin{itemize}
+\item o que requer a inclusão do pacote que implementa tal comando!
+\end{itemize}
+\end{itemize}
+\item Se ao realizar a inclusão do pacote e o \LaTeX\ indicar sua ausência no sistema...
+\begin{itemize}
+\item será necessário o download do código-fonte do pacote (pode ser em formato .tex, .cls ou .sty)
+\item mover o código-fonte do pacote para a pasta raiz do arquivo \LaTeX\ sendo editado
+\item incluir o pacote no arquivo com o comando $\backslash usepackage$
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Comandos básicos}
+\begin{itemizespc}
+\item Quebra de linha
+\begin{itemize}
+\item inserir ``$\backslash \backslash$'' no momento da mudança de linha
+\end{itemize}
+\item Parágrafo
+\begin{itemize}
+\item inserir ``$\backslash indent$'' ao iniciar o parágrafo
+\item o comando ``$\backslash noindent$'' retira a identação de um parágrafo\\
+\end{itemize}
+\item Comentários no código: incluir $\%$ na linha a ser comentada
+\vspace{0.5cm}
+{\scriptsize 
+\begin{columns}[T]
+\begin{column}{.5\textwidth}
+$\backslash noindent$ Meu primeiro documento em Latex!$\backslash \backslash$\\
+$\backslash indent$ Muito interessante!
+\end{column}
+\hfill
+\begin{column}{.5\textwidth}
+\noindent Meu primeiro documento em Latex! \\
+\indent $\quad$ Muito interessante!
+\end{column}
+\end{columns}}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Comandos básicos}
+\begin{itemizespc}
+\item {\bf Importante: } uma ou mais linhas em branco delimitam um parágrafo!
+\item Comentários no código: incluir $\%$ na linha a ser comentada
+\item Espaços em branco, tabulações e novas linhas são desprezados no momento da compilação
+\end{itemizespc}
+}
+
+
+
+
+
+%\begin{frame}{Como o \LaTeX funciona?}
+%\begin{itemize}
+%\item You write your document in \texttt{plain text} with \cmd{commands} that
+%describe its structure and meaning.
+%\item The \texttt{latex} program processes your text and commands to produce a
+%eautifully formatted document.
+%\end{itemize}
+%\vskip 2ex
+%\begin{center}
+%\begin{minted}[frame=single]{latex}
+%The rain in Spain falls \emph{mainly} on the plain.
+%\end{minted}
+%\vskip 2ex
+%\tikz\node[single arrow,fill=gray,font=\ttfamily\bfseries,%
+%  rotate=270,xshift=-1em]{latex};
+%\vskip 2ex
+%\fbox{The rain in Spain falls \emph{mainly} on the plain.}
+%\end{center}
+%\end{frame}
+
+%\frame{\frametitle{Bibliografia}
+%\begin{itemizespc} 
+%\item João Nunes de Souza, Lógica para Ciência da Computação, Campus SBC, Elsevier Brasil, 2a ed., 2008, 220 p.
+%\begin{figure}
+%\includegraphics[scale=0.5]{figs/book.png}
+%\end{figure}
+%\end{itemizespc}
+%}
+
+
+%\frame{\frametitle{Colors}
+
+%\textcolor{red}{Of course that you could color your text}
+%\textcolor{orange}{Of course that you could color your text}
+%\textcolor{blue}{Of course that you could color your text}
+%\textcolor{yellow}{Of course that you could color your text}
+%\textcolor{green}{Of course that you could color your text}
+
+%}
+%-------------------------------------
+
+%\frame{\frametitle{Formating}
+
+%\begin{center}
+%\sout{strikethrough}  \\
+%\textit{italic} \\
+%\textbf{bold} \\
+%\underline{underline}
+
+%\end{center}
+
+%}
+
+\end{document}

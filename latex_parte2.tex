@@ -1,0 +1,1193 @@
+\documentclass[brazil,14]{beamer}
+\usepackage[latin1]{inputenc}
+\usepackage{beamerthemesplit}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{fancybox}
+\usepackage{ulem}
+\usefonttheme{serif}
+\usetheme{Copenhagen}
+%\usetheme{CambridgeUS}
+%\usetheme{Malmoe}
+\setbeamertemplate{footline}[frame number]
+\newenvironment{itemizespc}{
+\begin{itemize}
+  \setlength{\itemsep}{15pt}
+}{\end{itemize}}
+\definecolor{qualquer}{rgb}{0.5,0.25,0.1}
+\xdefinecolor{darkblue}{rgb}{0,0,0.5}
+\newcommand{\lyxline}[1][1pt]{%
+  \par\noindent%
+  \rule[.5ex]{\linewidth}{#1}\par}
+  
+
+  % -inicio codigo fonte
+\usepackage{listings}
+\lstset{
+language = [LaTeX]{TeX},
+numbers=left,
+stepnumber=1,
+firstnumber=1,
+numberstyle=\tiny,
+%extendedchars=true,
+breaklines=true,
+frame=tb,
+basicstyle=\footnotesize,
+stringstyle=\ttfamily,
+showstringspaces=false
+}
+\renewcommand{\lstlistingname}{Code}
+%\renewcommand{\lstlistlistingname}{Lista de Listagens}
+% - fim codigo fonte
+
+\begin{document}
+
+\title{Preparando documento com o LaTeX - DCC/UFLA}
+
+\begin{frame}[plain]{}
+\begin{center}
+\includegraphics[width=0.3\linewidth]{figs/ufla.png} \hspace{0.2cm}\\
+\bf{ Departamento de Ciência da Computação (DCC)}\\
+ \setbeamercolor{block body}{fg = white, bg=darkblue}
+\vspace{0.75cm}
+\begin{block}{ }
+\begin{center}
+\vspace{0.15cm}
+\Large{ {\bf Preparando documentos com o \LaTeX}}
+%Minicurso de LaTeX}}
+\vspace{0.15cm}
+\end{center}
+\end{block}
+\vspace{0.4cm}
+{\bf Vinicius Ruela Pereira Borges}\\
+{\scriptsize  \url{vinicius.borges@dcc.ufla.br} }\\
+%{\bf Aluno1, Aluno2, ..., AlunoN}\\
+%{\scriptsize  \url{vinicius.borges@dcc.ufla.br} }\\
+\vspace{0.4cm}
+{\it Parte 2}\\
+\vspace{0.25cm}
+ \end{center}
+\end{frame}
+
+
+\frame{\frametitle{Roteiro}
+\begin{itemizespc}
+\item Texto
+\begin{itemize}
+\item Formatação
+\item Organização estrutural
+\end{itemize}
+\item Imagens
+\item Ambiente matemático
+\begin{itemize}
+\item Funções
+\item Símbolos matemáticos
+\end{itemize}
+\item Tabelas
+\begin{itemize}
+\item Ambiente Tabular
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Estilos de numeração de páginas}
+\begin{itemizespc}
+\item Comando:
+\begin{itemize}
+\item $\backslash pagestyle\{ estilo \}$
+\item $\backslash thispagestyle\{ estilo \}$
+\end{itemize}
+\item estilos disponíveis:
+\begin{itemize}
+\item {\tt plain}: número de página no rodapé é centralizado
+\item {\tt headings}: capítulo corrente e número da página no cabeçalho
+\item {\tt empty}: cabeçalho e rodapé vazios (página ``limpa'');
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Alinhamento do texto}
+\begin{itemizespc}
+\item Comando:
+\begin{itemize}
+\item $\backslash \mathtt{begin}\{alinhamento\}$ \\
+      ... \\
+      $ \backslash \mathtt{end} \{alinhamento\}$
+\end{itemize}
+\item em que $alinhamento$ pode ser:
+\begin{itemize}
+\item {\tt flushleft}: alinhado à margem esquerda
+\item {\tt flushright}: alinhado à margem direita
+\item {\tt center}: centralizado
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Símbolos especiais e traços}
+\begin{itemizespc}
+\item Para utilizar alguns símbolos especiais, deve-se utilizar o $\backslash$ antes de cada símbolo:
+\begin{center}
+$\textbackslash$\^ \/ \# \$ \%  \_ \{ \}
+\end{center}
+\item Deve-se inserir ``$\backslash$'' antes de cada símbolo no decorrer do texto:
+\begin{itemize}
+\item ``$\backslash\#$'' para mostrar \#
+\end{itemize}
+\item Traços:
+\begin{itemize}
+\item ``- '' aparecerá como -
+\item ``- - '' aparecerá como -- 
+\item ``- - - '' aparecerá como ---
+\end{itemize}
+\item Escrever sentença entre aspas: $\grave{ }$ $\grave{ }$ {\it texto} ' ' 
+\begin{itemize}
+\item $\grave{ }$ $\grave{ }$ A vida é bela.' ' produz ``A vida é bela.''
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Estilos de letras}
+\begin{itemizespc}
+\item As palavras/frases podem ser escritas como:
+\begin{itemize}
+\item ``$\{ \backslash$bf  negrito $\}$'' para mostrar {\bf negrito}
+\item ``$\{ \backslash$sf  sans serif $\}$'' para mostrar {\sf sans serif}
+\item ``$\{ \backslash$sl  slanted $\}$'' para mostrar {\sl slanted}
+\item ``$\{ \backslash$it  itálico $\}$'' para mostrar {\it itálico}
+\item ``$\{ \backslash$tt  machine $\}$'' para mostrar {\tt machine}
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Tamanho de fonte}
+\begin{itemizespc}
+\item São comumente empregadas as fontes de tamanho:\\
+\begin{center}
+$\{ \backslash tiny\{ \textrm{tamanho do texto}\}\}$ $\longrightarrow$ {\tiny{tamanho do texto}}\\
+$\{ \backslash scriptsize\{ \textrm{tamanho do texto}\}\}$ $\longrightarrow$ {\scriptsize{tamanho do texto}}\\
+$\{ \backslash footnotesize\{ \textrm{tamanho do texto}\}\}$ $\longrightarrow$ {\footnotesize{tamanho do texto}}\\
+$\{ \backslash small\{ \textrm{tamanho do texto}\}\}$ $\longrightarrow$ {\small{tamanho do texto}}\\
+$\{ \backslash normalsize\{ \textrm{tamanho do texto}\}\}$ $\longrightarrow$ {\normalsize{tamanho do texto}}\\
+$\{ \backslash large\{ \textrm{tamanho do texto}\}\}$ $\longrightarrow$ {\large{tamanho do texto}}\\
+$\{ \backslash Large\{ \textrm{tamanho do texto}\}\}$ $\longrightarrow$ {\Large{tamanho do texto}}\\
+$\{ \backslash LARGE\{ \textrm{tamanho do texto}\}\}$ $\longrightarrow$ {\LARGE{tamanho do texto}}\\
+$\{ \backslash huge\{ \textrm{tamanho do texto}\}\}$ $\longrightarrow$ {\Huge{tamanho do texto}}\\
+\end{center}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Hifenização de palavras}
+\begin{itemizespc}
+\item Em alguns textos, palavras podem ser incorretamente quebradas desconsiderando sua correta hifenização
+\item Uma solução é utilizar o comando $\backslash\mathtt{hyphenation}\{<\textrm{palavras}>\}$
+\begin{itemize}
+\item Em $\{<\textrm{palavras}>\}$, inserir as palavras, separadas por vírgula e hifenizadas, conforme:
+\item Inserir o comando $\backslash\mathtt{hyphenation}$ no preâmbulo. 
+\end{itemize}
+\begin{center}
+$\backslash\mathtt{hyphenation}\{\textrm{ cor-re-to, com-pu-ta-ção, do-cu-men-to }\}$
+\end{center}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Notas de rodapé}
+\begin{itemizespc}
+\item Notas de rodapé podem ser inseridas no texto utilizando o comando:
+\begin{center}
+$\backslash\mathtt{footnote}\{\textrm{ texto }\}$
+\end{center}
+\item Exemplo:
+\begin{figure}
+\includegraphics[scale=0.4]{figs/footnote.png}
+\end{figure}
+\item Para incluir URL, utilizar o pacote {\tt url} e o comando $\backslash\mathtt{url}\{...\}$
+\end{itemizespc}
+}
+
+\frame{\frametitle{Organização estrutural: estilo article}
+\begin{itemizespc}
+\item No estilo $\{ \mathtt{article}\}$, a hierarquia de seções ocorre como:
+\begin{enumerate}
+\item Seções: $\backslash\mathtt{section}\{\textrm{ Nome da Seção }\}$
+\item Subseções: $\backslash\mathtt{subsection}\{\textrm{ Nome da Sub Seção }\}$
+\item Subsubseções: $\backslash\mathtt{subsubsection}\{\textrm{ Nome da Sub Seção }\}$
+\end{enumerate}
+\item Exemplo:
+\begin{figure}
+\includegraphics[scale=0.3]{figs/hierarqArticle.png}
+\end{figure}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Organização estrutural: estilos report e book}
+\begin{itemizespc}
+\item Nos estilos $\{ \mathtt{report}\}$ e $\{ \mathtt{book}\}$, a hierarquia de capítulo e seções ocorre como:
+\begin{enumerate}
+\item Seções: $\backslash\mathtt{chapter}\{\textrm{ Nome do Capítulo }\}$
+\item Seções: $\backslash\mathtt{section}\{\textrm{ Nome da Seção }\}$
+\item Subseções: $\backslash\mathtt{subsection}\{\textrm{ Nome da Sub Seção }\}$
+\item Subsubseções: $\backslash\mathtt{subsubsection}\{\textrm{ Nome da Sub Seção }\}$
+\end{enumerate}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Organização estrutural: estilos report e book}
+\begin{itemizespc}
+\item Exemplo:
+\begin{figure}
+\includegraphics[scale=0.25]{figs/hierarqReport.png}
+\end{figure}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Listas}
+\begin{itemizespc}
+\item Ambiente útil para organizar sentenças sob a forma de itens
+\item Listar itens (itemize):
+\begin{flushleft}
+$\backslash\mathtt{begin}\{\textrm{itemize}\}$\\
+$\backslash\mathtt{item} \quad \textrm{item 1}$\\
+$\backslash\mathtt{item} \quad \textrm{item 2}$\\
+$\backslash\mathtt{item} \quad \textrm{item 3}$\\
+$\backslash\mathtt{item}$ ..\\
+$\backslash\mathtt{end}\{\textrm{itemize}\}$
+\end{flushleft}
+\item Para alterar o símbolo, considerar $\backslash\mathtt{item}[\textrm{comando do símbolo}]$
+\begin{itemize}
+\item Exemplo: $\backslash\mathtt{item}[\backslash ast]$
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Listas: itemize}
+\begin{itemizespc}
+\item Ambiente útil para organizar sentenças sob a forma de itens
+\item Enumerar itens:
+\begin{flushleft}
+$\backslash\mathtt{begin}\{\textrm{enumerate}\}$\\
+$\backslash\mathtt{item} \quad \textrm{item 1}$\\
+$\backslash\mathtt{item} \quad \textrm{item 2}$\\
+$\backslash\mathtt{item} \quad \textrm{item 3}$\\
+$\backslash\mathtt{item}$ ..\\
+$\backslash\mathtt{end}\{\textrm{enumerate}\}$
+\end{flushleft}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Listas: enumerate}
+\begin{itemizespc}
+\item Ao usar letras, considerar $\backslash\mathtt{begin}\{\textrm{enumerate}\}[a)]$ e incluir no preâmbulo $\backslash\mathtt{usepackage}\{\textrm{enumerate}\}$
+\item Exemplo:
+\begin{enumerate}[a)]
+\item item 1
+\item item 2
+\item item 3
+\end{enumerate}
+\item Inserir $\backslash \mathtt{setcounter} \{  \mathtt{enumi} \}\{\textrm{início}\}$ para iniciar a numeração pelo índice ``início+1''
+
+\end{itemizespc}
+}
+
+\frame{\frametitle{Listas: description}
+\begin{itemizespc}
+\item Ambiente útil para organizar sentenças sob a forma de itens
+\item Descrever itens:
+\begin{flushleft}
+$\backslash\mathtt{begin}\{\textrm{description}\}$\\
+$\backslash\mathtt{item}[\textrm{descricao 1}] \quad \textrm{item 1}$\\
+$\backslash\mathtt{item}[\textrm{descricao 2}] \quad \textrm{item 2}$\\
+$\backslash\mathtt{item}[\textrm{descricao 3}] \quad \textrm{item 3}$\\
+$\backslash\mathtt{item}[\textrm{...}]$ ..\\
+$\backslash\mathtt{end}\{\textrm{description}\}$
+\end{flushleft}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Cores}
+\begin{itemizespc}
+\item Para utilizar cores no texto do Latex, é necessário utilizar o pacote {\tt color}:
+\begin{itemize}
+\item $\backslash \mathtt{usepackage}\{ \mathtt{color}\}$
+\end{itemize}
+\item Definir a cor no preâmbulo do documento Latex de acordo com o modelo RGB, isto é, valores entre $[0,1]$ para cada um dos canais (vermelho - red, verde - green e azul - blue)
+\begin{itemize}
+\item $\backslash \mathtt{definecolor}\{ \textrm{nome da cor}\}\{ \mathtt{rgb}\}\{ \mathtt{0.5,0.25,0.1}\}$
+\item vermelho $= 0.5$
+\item verde $= 0.25$
+\item azul $= 0.1$
+\item Lembre-se: sempre utilizar ponto ao invés de vírgula!!!
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Cores}
+\begin{itemizespc}
+\item Para colorir uma frase ou palavra no texto, utilizar o comando abaixo no texto:
+\begin{itemize}
+\item $\backslash \mathtt{textcolor}\{ \textrm{nome da cor}\}\{ \mathtt{texto}\}$
+\end{itemize}
+\item Exemplo:
+\begin{itemize}
+\item No preâmbulo: $\backslash \mathtt{definecolor}\{ \textrm{qualquer}\}\{ \mathtt{rgb}\}\{ \mathtt{0.5,0.25,0.1}\}$
+\item No texto: $\backslash \mathtt{textcolor}\{ \textrm{qualquer}\} \{ \textrm{ Aeeee, colorido!!!}\}$
+\item Resultado: \textcolor{qualquer}{Aeeee, colorido!!!}
+\end{itemize}
+\end{itemizespc}
+}
+
+%\frame{\frametitle{Cores}
+%\begin{itemizespc}
+%\item Muda a cor do fundo da página
+%\begin{itemize}
+%\item $\backslash \mathtt{pagecolor}\{ \mathtt{color}\}$
+%\end{itemize}
+%\item Produz uma caixa com o texto e o fundo da cor escolhida
+%\begin{itemize}
+%\item $\backslash \mathtt{colorbox}\{ \mathtt{color}\} \{ \textrm{ texto }\}$
+%\end{itemize}
+%\end{itemizespc}
+%}
+
+\frame{\frametitle{Espaços e medidas}
+\begin{itemizespc}
+\item Para adicionar espaço ``vazio'' entre as palavras, frases e figuras, utilize o comando:\\
+\begin{center}
+$\backslash \mathtt{hspace}\{ medida\}$
+\end{center}
+\begin{itemize}
+\item $medida$ pode ser em $cm$, $in$ ou $pt$
+\end{itemize}
+\item Exemplo:
+\begin{itemize}
+\item Aqui temos $\backslash \mathtt{hspace}\{ \mathtt{2cm}\}$ de espaço
+\item Resultado: Aqui temos \hspace{2cm} de espaço.
+\end{itemize}
+\item Pode ser combinado com o comando $\backslash \mathtt{underline}\{ \mathtt{2cm}\}$
+\begin{itemize}
+\item Aqui temos $\backslash \mathtt{hspace}\{ \mathtt{hspace}\{ \mathtt{2cm}\}\}$ de espaço sublinhado
+\item Resultado: Aqui temos \underline{\hspace{2cm}} de espaço sublinhado.
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Espaços e medidas}
+\begin{itemizespc}
+\item Para adicionar espaço ``vazio'' entre as linhas, isto é, na vertical:\\
+\begin{center}
+$\backslash \mathtt{vspace}\{ medida\}$
+\end{center}
+\item Exemplo:
+\begin{itemize}
+\item Aqui temos $\backslash \backslash \quad \backslash \mathtt{vspace}\{ \mathtt{2cm}\}$ de espaço
+\item Resultado: Aqui temos\\ \vspace{1cm} de espaço.
+\end{itemize}
+\end{itemizespc}
+}
+
+
+\frame{\frametitle{Imagens: o comando includegraphics}
+\begin{itemizespc}
+\item Para inserir figuras em documentos \LaTeX\, deve-se inserir no preâmbulo o pacote {\texttt graphicx}:\\
+\begin{center}
+$\backslash \mathtt{usepackage}\{ \mathtt{graphicx} \}$
+\end{center}
+\item O formato da figuras deve ser .eps (Encapsulated PostScript)
+\item Para incluir a imagem como uma figura, utilizar:\\
+\begin{center}
+$\backslash \mathtt{includegraphics}[medidas]\{ \textrm{nome do arquivo} \}$
+\end{center}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Imagens: o comando figure}
+\begin{itemizespc}
+\item Para trabalhar com figuras \LaTeX\, utiliza-se o ambiente {\texttt figure}:\\
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{figure}\}[pos] $\\
+$\backslash \mathtt{includegraphics}[medidas]\{ \textrm{nome do arquivo} \}$
+$\backslash \mathtt{caption} \{ \textrm{Legenda da figura} \}$ \\
+$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{figure}\}$
+\end{flushleft}
+\item em que $pos$ pode ser:
+\begin{itemize}
+\item b - bottom (tabela ficará na parte de baixo da página)
+\item t - top (tabela ficará na parte de cima da página)
+\item h - here (tabela ficará onde digitada na página)
+\item p - (tabela ficará em parte separada)
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Imagens: o comando figure}
+\begin{itemizespc}
+\item Para trabalhar com figuras \LaTeX\, utiliza-se o ambiente {\texttt figure}:\\
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{figure}\}[pos] $\\
+$\backslash \mathtt{includegraphics}[medidas]\{ \textrm{nome do arquivo} \}$
+$\backslash \mathtt{caption} \{ \textrm{Legenda da figura} \}$ \\
+$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{figure}\}$
+\end{flushleft}
+\item Alguns exemplos para $medidas$:
+\begin{itemize}
+\item $[width=x\backslash \mathtt{linewidth}]$: ajuste de acordo com a largura da linha
+\item $[scale=x]$: escala da imagem
+\item $x$ é um valor maior do que zero. Se $x < 1$, a imagem é subdimensionada, enquanto que, $x > 1$, a imagem é aumentada.
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Imagens: o comando figure}
+\begin{itemizespc}
+\item Exemplo:
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{figure}\}[h] $\\
+$\backslash \mathtt{includegraphics}[scale=0.1]\{ \textrm{figs/latexdccufla.eps} \}$
+$\backslash \mathtt{caption} \{ \textrm{Logo do grupo} \}$ \\
+$\backslash \mathtt{label}\{\textrm{fig:logo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{figure}\}$
+\end{flushleft}
+\item produz a Figura \ref{fig:logo}:
+\begin{figure}[h]
+\includegraphics[scale=0.1]{figs/latex.png}
+\caption{Logo do grupo}
+\label{fig:logo}
+\end{figure}
+\end{itemizespc}
+}
+
+
+\frame{\frametitle{Imagens: outras opções}
+\begin{itemizespc}
+\item Para inserir figuras em documentos \LaTeX\, deve-se inserir no preâmbulo o pacote {\texttt graphicx}:\\
+\begin{center}
+$\backslash \mathtt{usepackage}\{ \mathtt{graphicx} \}$
+\end{center}
+\item O formato da figuras deve ser .eps (Encapsulated PostScript)
+\item Para incluir a imagem como uma figura, utilizar:\\
+\begin{center}
+$\backslash \mathtt{includegraphics}[medidas]\{ \textrm{nome do arquivo} \}$
+\end{center}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Ambiente matemático: fórmulas}
+\begin{itemizespc}
+\item Para inserir fórmulas matemáticas no decorrer do texto em um parágrafo, utilizar:
+\begin{center}
+\$ $<$ fórmula matemática $>$ \$%$\backslash\mathtt{footnote}\{\textrm{ texto }\}$
+\end{center}
+\item Exemplo:\\
+\vspace{1cm}
+{\scriptsize 
+\begin{columns}[T]
+\begin{column}{.5\textwidth}
+... o alce come alface, pois \$ 4\^{} $\{$2$\}$=16 \$ e que a Terra gira em torno da lua.
+\end{column}
+\begin{column}{.45\textwidth}
+... o alce come alface, pois $ 4^2=16$ e que a Terra gira em torno da lua.
+\end{column}
+\end{columns}}
+\end{itemizespc}
+}
+
+
+\frame{\frametitle{Ambiente matemático: subescrito e sobrescritos}
+\begin{itemizespc}
+\item Subescrito é escrito como:
+\begin{itemize}
+\item \$ 4\_{}$\{$2$\}$\$ produz $4_2$
+\end{itemize}
+\item Sobrescrito é escrito como:
+\begin{itemize}
+\item \$ 4\^{}$\{$2$\}$\$ produz $4^2$
+\end{itemize}
+\item Observação: quando o expoente possuir um único digito, 4\^{}$\{$2$\}$ (ou 4\_{}$\{$2$\}$) pode ser reescrito como 4\^{}2 (ou 4\_2)
+\end{itemizespc}
+}
+
+\frame{\frametitle{Fórmulas matemáticas}
+\begin{itemizespc}
+\item Ou ainda, podem ser utilizados o ambiente matemático (esquerda) ou por meio de parênteses:
+\vspace{1cm}
+{\small 
+\begin{columns}[T]
+\begin{column}{.45\textwidth}
+$\backslash begin\{\mathtt{math}\}$ \\ $\quad$ $\quad$ fórmula matemática \\ $\backslash end\{\mathtt{math}\}$
+\end{column}
+\begin{column}{.45\textwidth}
+$\backslash($ fórmula matemática $\backslash)$
+\end{column}
+\end{columns}}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Fórmulas matemáticas}
+\begin{itemizespc}
+\item Para que as fórmulas sejam destacadas e rotuladas fora do parágrafo, deve-se utilizar o ambiente {\tt equation}
+\begin{center}
+$\backslash \mathtt{begin}\{\mathtt{equation}\}$ \\ $\quad$ $\quad$ fórmula matemática \\
+$\backslash \mathtt{end}\{\mathtt{equation}\}$
+\end{center}
+\item Para identificar o rótulo da fórmula e referenciá-la no texto, inserir o comando $\backslash \mathtt{label}\{\textrm{rotulo}\}$\\
+\begin{center}
+$\backslash \mathtt{begin}\{\mathtt{equation}\}$ \\ $\quad$ $\quad$ fórmula matemática \\
+$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\ $\backslash \mathtt{end}\{\mathtt{equation}\}$
+\end{center}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Fórmulas matemáticas}
+\begin{itemizespc}
+\item Exemplo do ambiente equation:\\
+\vspace{1cm}
+{\small 
+\begin{columns}[T]
+\begin{column}{.55\textwidth}
+Segundo a Eq. ($\backslash \mathtt{ref}\{\textrm{eq:soma1}\}$) abaixo:\\
+$\backslash \mathtt{begin}\{\mathtt{equation}\}$ \\ $\quad$ $\quad$ a\^{}$\{$2$\}$ + b\^{}$\{$2$\}$= c\^{}$\{$2$\}$\\
+$\backslash \mathtt{label}\{\textrm{eq:soma1}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{equation}\}$
+%$\backslash begin\{\mathtt{math}\}$ \\ $\quad$ $\quad$ fórmula matemática \\ $\backslash end\{\mathtt{math}\}$
+\end{column}
+\begin{column}{.4\textwidth}
+Segundo a Eq. (\ref{eq:soma1}) abaixo:
+\begin{equation}
+a^2 + b^2 = c^2
+\label{eq:soma1}
+\end{equation}
+\end{column}
+\end{columns}}
+\end{itemizespc}
+}
+
+
+\frame{\frametitle{Fórmulas matemáticas: outros comandos}
+\begin{itemizespc}
+\item Raízes: $\backslash \mathtt{sqrt}[...]\{...\}$
+\begin{itemize}
+\item $\backslash \mathtt{sqrt}[3]\{8\} \rightarrow \sqrt[3]{8}$
+\item quando $[]$ não é fornecido, a raíz é quadrada
+\end{itemize}
+\item Frações
+\begin{itemize}
+\item $\backslash \mathtt{frac}\{numerador\}\{denominador\}$
+\item Exemplo: $\backslash \mathtt{frac}\{ x\hat{ } 2+1 \}\{x+1\}$ produz
+\begin{equation}
+\frac{x^2 + 1}{x + 1} \nonumber
+\end{equation}
+\end{itemize} 
+\end{itemizespc}
+}
+
+\frame{\frametitle{Fórmulas matemáticas: funções}
+\begin{itemizespc}
+\item Logaritmo: $\backslash \mathtt{log}numero$
+\begin{itemize}
+\item $\backslash \mathtt{log}10$ produz $\log10$
+\end{itemize}
+\item Exponencial: $\backslash \mathtt{exp}numero$
+\begin{itemize}
+\item $\backslash \mathtt{exp}10$ produz $\exp10$
+\end{itemize}
+\begin{itemize}
+\item $\backslash \mathtt{frac}\{numerador\}\{denominador\}$
+\item Exemplo: $\backslash \mathtt{frac}\{ x\hat{ } 2+1 \}\{x+1\}$ produz
+\begin{equation}
+\frac{x^2 + 1}{x + 1} \nonumber
+\end{equation}
+\end{itemize} 
+\end{itemizespc}
+}
+
+\frame{\frametitle{Fórmulas matemáticas: ambiente array}
+\begin{itemizespc}
+\item Ambiente útil para escrever matrizes e condicionais, pois ocorre a organização dos elementos em linhas e colunas
+\begin{center}
+$\backslash \mathtt{begin}\{\mathtt{array}\}\{cc\}$ \\
+$\quad$ $\quad a \quad \& \quad b \backslash \backslash$ \\
+$\quad$ $\quad c \quad \& \quad d \backslash \backslash$ \\
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{array}\}$
+\end{center}
+\item produz
+\begin{equation}
+\begin{array}{cc}
+a & b \\
+c & d \\
+\end{array}
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+\end{equation}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Fórmulas matemáticas: ambiente array}
+\begin{center}
+$\backslash \mathtt{begin}\{\mathtt{array}\}\{cc\}$ \\
+$\quad$ $\quad a \quad \& \quad b \backslash \backslash$ \\
+$\quad$ $\quad c \quad \& \quad d \backslash \backslash$ \\
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{array}\}$
+\end{center}
+\begin{itemizespc}
+\item em que $cc$ indica que a matriz possui duas colunas com conteúdo centralizado
+\item Logo, cada dígito se refere a uma coluna na matriz
+\item Outras possibilidades:
+\begin{itemize}
+\item {\tt l} - left
+\item {\tt r} - right 
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Fórmulas matemáticas: ambiente array}
+\begin{center}
+$\backslash \mathtt{begin}\{\mathtt{array}\}\{cc\}$ \\
+$\quad$ $\quad a \quad \& \quad b \backslash \backslash$ \\
+$\quad$ $\quad c \quad \& \quad d \backslash \backslash$ \\
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{array}\}$
+\end{center}
+\begin{itemizespc}
+\item Dentro do ambiente {\tt array}:
+\begin{itemize}
+\item Cada coluna é separada pelo símbolo \$
+\item Ao término de cada linha, deve-se inserir $\backslash \backslash$ para iniciar nova linha na matriz 
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Fórmulas matemáticas: ambiente array}
+\begin{itemizespc}
+\item Para inserir bordas no array:
+\begin{itemize}
+\item Linhas: comando $\backslash \mathtt{hline}$
+\item Colunas: inserir $\arrowvert$ no campo entre as colunas 
+\end{itemize}
+\item Por exemplo:
+{\scriptsize 
+\begin{columns}[T]
+\begin{column}{.5\textwidth}
+\begin{center}
+$\backslash \mathtt{begin}\{\mathtt{array}\}\{ \arrowvert cc \arrowvert\}$ \\
+$\backslash \mathtt{hline}$\\
+$\quad$ $\quad a \quad \& \quad b \backslash \backslash$ \\
+$\quad$ $\quad c \quad \& \quad d \backslash \backslash$ \\
+$\backslash \mathtt{hline}$ \\
+$\backslash \mathtt{end}\{\mathtt{array}\}$
+\end{center}
+\end{column}
+\begin{column}{.45\textwidth}
+\begin{equation}
+\begin{array}{|cc|}
+\hline
+a & b \\
+c & d \\
+\hline 
+\end{array}\nonumber
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+\end{equation}
+\end{column}
+\end{columns}}
+\end{itemizespc}
+}
+
+
+\frame{\frametitle{Fórmulas matemáticas: ambiente array}
+\begin{itemizespc}
+\item Para inserir bordas no array:
+\begin{itemize}
+\item Linhas: comando $\backslash \mathtt{hline}$
+\item Colunas: inserir $\arrowvert$ no campo entre as colunas 
+\end{itemize}
+\item Por exemplo:
+{\scriptsize 
+\begin{columns}[T]
+\begin{column}{.5\textwidth}
+\begin{center}
+$\backslash \mathtt{begin}\{\mathtt{array}\}\{  c \arrowvert c  \}$ \\
+$\backslash \mathtt{hline}$\\
+$\quad$ $\quad a \quad \& \quad b \backslash \backslash$ \\
+$\backslash \mathtt{hline}$ \\
+$\quad$ $\quad c \quad \& \quad d \backslash \backslash$ \\
+$\backslash \mathtt{end}\{\mathtt{array}\}$
+\end{center}
+\end{column}
+\begin{column}{.45\textwidth}
+\begin{equation}
+\begin{array}{c|c}
+a & b \\
+\hline
+c & d \\
+\end{array}\nonumber
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+\end{equation}
+\end{column}
+\end{columns}}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Fórmulas matemáticas: ambiente array}
+\begin{itemizespc}
+\item Para escrever uma matriz em uma formatação matemática adequada, deve considerar
+\begin{flushleft}
+$\backslash \mathtt{big}( \quad \backslash\mathtt{Big}( \quad \backslash\mathtt{bigg}( \quad \backslash\mathtt{Bigg}( \quad \longrightarrow \quad \big( \Big( \bigg( \Bigg($ \\
+$\backslash \mathtt{big}) \quad \backslash\mathtt{Big}) \quad \backslash\mathtt{bigg}) \quad \backslash\mathtt{Bigg}) \longrightarrow \quad \big) \Big) \bigg) \Bigg)$\\
+$\backslash \mathtt{big}[ \quad \backslash\mathtt{Big}[ \quad \backslash\mathtt{bigg}[ \quad \backslash\mathtt{Bigg}[ \quad \longrightarrow \quad \big[ \Big[ \bigg[ \Bigg[$\\
+$\backslash \mathtt{big}] \quad \backslash\mathtt{Big}] \quad \backslash\mathtt{bigg}] \quad \backslash\mathtt{Bigg}] \quad \longrightarrow \quad \big] \Big] \bigg] \Bigg]$\\
+\end{flushleft}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Fórmulas matemáticas: ambiente array}
+\begin{itemizespc}
+\item Para escrever uma matriz em uma formatação matemática adequada, deve considerar
+\begin{flushleft}
+$\backslash \mathtt{big}\{ \quad \backslash\mathtt{Big}\{ \quad \backslash\mathtt{bigg}\{ \quad \backslash\mathtt{Bigg}\{ \quad \longrightarrow \quad \big\{ \Big\{ \bigg\{ \Bigg\{$\\
+$\backslash \mathtt{big}\} \quad \backslash\mathtt{Big}\} \quad \backslash\mathtt{bigg}\} \quad \backslash\mathtt{Bigg}\} \quad \longrightarrow \quad \big\} \Big\} \bigg\} \Bigg\}$
+\end{flushleft}
+\end{itemizespc}
+}
+
+
+
+
+\frame{\frametitle{Fórmulas matemáticas: ambiente array}
+\begin{itemizespc}
+\item Assim, utilizando alguns símbolos, uma matriz escrita considerando uma formatação matemática rigorosa é dada por:
+{\scriptsize 
+\begin{columns}[T]
+\begin{column}{.4\textwidth}
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{equation}\}$\\
+$ \backslash \mathtt{left}($\\
+$ \quad \quad \backslash \mathtt{begin}\{\mathtt{array}\}\{ c c c \}$\\
+$ \quad \quad \quad \quad a\_ \{ 00 \} \quad \& \quad a\_ \{ 01 \} \quad \& \backslash \mathtt{ldots} \backslash \backslash$\\
+$ \quad \quad \quad \quad a\_ \{ 01 \} \quad \& \quad a\_ \{ 11 \} \quad \& \backslash \mathtt{ldots} \backslash \backslash$\\
+$ \quad \quad \quad \quad \backslash \mathtt{vdots} \quad \& \quad \backslash \mathtt{vdots} \quad \& \backslash \mathtt{ddots} \backslash \backslash$ \\
+$ \quad \quad \backslash \mathtt{end}\{\mathtt{array}\}$\\
+$\backslash\mathtt{right})  \backslash \mathtt{nonumber} $\\
+$\backslash \mathtt{end}\{\mathtt{equation}\}$\\
+\end{flushleft}
+\end{column}
+\begin{column}{.45\textwidth}
+\begin{equation}
+\left (
+\begin{array}{ccc}
+a_{00} & a_{01} & \ldots \\
+a_{10} & a_{1} & \ldots \\
+\vdots & \vdots & \ddots
+\end{array} \right ) \nonumber
+\end{equation}
+\end{column}
+\end{columns}}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Fórmulas matemáticas: ambiente array}
+\begin{itemizespc}
+\item Pode-se utilizar arrays para montar condicionais
+\begin{itemize}
+\item Utilizar o comando $\backslash \mathtt{left}\backslash\{$ para inserir $\Bigg\{$
+\item e o delimitador vazio $\backslash\mathtt{right}.$
+\end{itemize}
+\item Por exemplo:
+{\scriptsize 
+\begin{columns}[T]
+\begin{column}{.4\textwidth}
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{equation}\}$\\
+$f(x)= \backslash \mathtt{left}\backslash\{$\\
+$ \quad \quad \backslash \mathtt{begin}\{\mathtt{array}\}\{ l \arrowvert r \}$\\
+$ \quad \quad \quad \quad 0 \quad \& \quad x \quad \backslash leq \quad 0 \backslash \backslash$\\
+$ \quad \quad \quad \quad x^2 \quad \& \quad x  >  0$\\
+$ \quad \quad \backslash \mathtt{end} \{ \mathtt{array} \} \backslash\mathtt{right}.$
+$\backslash \mathtt{end}\{\mathtt{equation}\}$\\
+\end{flushleft}
+\end{column}
+\begin{column}{.45\textwidth}
+\begin{equation}
+f(x)=\left\{
+\begin{array}{lr}
+0 & x\leq 0 \\
+x^2 & x>0
+\end{array}\right.\nonumber
+\end{equation}
+\end{column}
+\end{columns}}
+\end{itemizespc}
+}
+
+
+\frame{\frametitle{Fórmulas matemáticas em várias linhas}
+\begin{itemizespc}
+\item Utiliza-se o ambiente {\tt eqnarray} para inserir várias fórmulas
+\item Trata-se da combinação do ambiente {\tt equation} com o ambiente {\tt array}
+\vspace{1cm}
+{\small 
+\begin{columns}[T]
+\begin{column}{.6\textwidth}
+$\backslash \mathtt{begin}\{\mathtt{eqnarray}\}$ \\
+$\quad \quad x \quad \& \quad = \quad \& \quad m + n + p \backslash \backslash$\\
+$\quad \quad y \quad \& \quad = \quad \& \quad z + w + u \backslash \backslash$\\
+$\quad \quad z \quad \& \quad = \quad \& \quad p + n + p \backslash \backslash $\\
+$\backslash \mathtt{label}\{\textrm{eq:soma1}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{eqnarray}\}$
+%$\backslash begin\{\mathtt{math}\}$ \\ $\quad$ $\quad$ fórmula matemática \\ $\backslash end\{\mathtt{math}\}$
+\end{column}
+\begin{column}{.4\textwidth}
+Segundo a Eq. (\ref{eq:soma1}) abaixo:
+\begin{equation}
+a^2 + b^2 = c^2
+\label{eq:soma1}
+\end{equation}
+\end{column}
+\end{columns}}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Tabelas: o ambiente tabular}
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{tabular}\}\{cclr\}$ \\
+$\quad$ $\quad arroz \quad \& \quad feijao \quad \& \quad lentilha \quad \& \quad trigo \backslash \backslash$ \\
+$\quad$ $\quad alface \quad \& \quad repolho \quad \& \quad cenoura \quad \& \quad beterraba \backslash \backslash$ \\
+$\quad$ $\quad ovo \quad \& \quad bife \quad \& \quad queijo \quad \& \quad soja \backslash \backslash$ \\
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{tabular}\}$
+\end{flushleft}
+\begin{itemizespc}
+\item em que $cclr$ indica que a matriz possui quatro colunas, sendo com conteúdo centralizado
+\begin{itemize}
+\item primeira coluna com conteúdo centralizado - $c$
+\item segunda coluna com conteúdo centraliado - $c$
+\item terceira coluna com conteúdo alinhado à esquerda - $l$
+\item quarta coluna com conteúdo alinhado à direita - $r$ 
+\end{itemize}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Tabelas: o ambiente tabular}
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{tabular}\}\{cclr\}$ \\
+$\quad$ $\quad arroz \quad \& \quad feijao \quad \& \quad lentilha \quad \& \quad trigo \backslash \backslash$ \\
+$\quad$ $\quad alface \quad \& \quad repolho \quad \& \quad cenoura \quad \& \quad beterraba \backslash \backslash$ \\
+$\quad$ $\quad ovo \quad \& \quad bife \quad \& \quad queijo \quad \& \quad soja \backslash \backslash$ \\
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{tabular}\}$
+\end{flushleft}
+\begin{itemizespc}
+\item produz\\
+\vspace{0.5cm}
+\begin{tabular}{cclr}
+arroz & feijao & lentilha & trigo \\
+alface & repolho & cenoura & beterraba \\
+ovo & bife & queijo & soja \\
+\end{tabular}
+\end{itemizespc}
+}
+
+
+\frame{\frametitle{Tabelas: o ambiente tabular}
+\begin{itemizespc}
+\item Incluindo linhas verticais na tabela
+\begin{itemize}
+\item Incluir $\arrowvert$ na declaração do ambiente tabular
+\end{itemize}
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{tabular}\}\{|c|c|l|r|\}$ \\
+$\quad$ $\quad arroz \quad \& \quad feijao \quad \& \quad lentilha \quad \& \quad trigo \backslash \backslash$ \\
+$\quad$ $\quad alface \quad \& \quad repolho \quad \& \quad cenoura \quad \& \quad beterraba \backslash \backslash$ \\
+$\quad$ $\quad ovo \quad \& \quad bife \quad \& \quad queijo \quad \& \quad soja \backslash \backslash$ \\
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{tabular}\}$
+\end{flushleft}\item produz\\
+\vspace{0.5cm}
+\begin{tabular}{|c|c|l|r|}
+arroz & feijao & lentilha & trigo \\
+alface & repolho & cenoura & beterraba \\
+ovo & bife & queijo & soja \\
+\end{tabular}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Tabelas: o ambiente tabular}
+\begin{itemizespc}
+\item Incluindo linhas horizontais na tabela
+\begin{itemize}
+\item Comando $\backslash \mathtt{hline}$
+\end{itemize}
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{tabular}\}\{|c|c|l|r|\}$ \\
+$\backslash \mathtt{hline}$
+$\quad$ $\quad arroz \quad \& \quad feijao \quad \& \quad lentilha \quad \& \quad trigo \backslash \backslash \quad \backslash \mathtt{hline}$ \\
+$\quad$ $\quad alface \quad \& \quad repolho \quad \& \quad cenoura \quad \& \quad beterraba \backslash \backslash \quad \backslash \mathtt{hline}$ \\
+$\quad$ $\quad ovo \quad \& \quad bife \quad \& \quad queijo \quad \& \quad soja \backslash \backslash \quad \backslash \mathtt{hline}$ \\
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{tabular}\}$
+\end{flushleft}\item produz\\
+\vspace{0.5cm}
+\begin{tabular}{|c|c|l|r|}
+\hline
+arroz & feijao & lentilha & trigo  \\ \hline
+alface & repolho & cenoura & beterraba \\ \hline 
+ovo & bife & queijo & soja  \\ \hline
+\end{tabular}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Tabelas: o ambiente tabular}
+\begin{itemizespc}
+\item Fazer linhas horizontais apenas entre as colunas $i$ e $j$
+\begin{itemize}
+\item Comando $\backslash \mathtt{cline}\{ i-j\}$
+\end{itemize}
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{tabular}\}\{|c|c|l|r|\}$ \\
+$\backslash \mathtt{hline}$
+$\quad$ $\quad arroz \quad \& \quad feijao \quad \& \quad lentilha \quad \& \quad trigo \backslash \backslash \quad \backslash \mathtt{cline}\{ 3-4\}$ 
+$\quad$ $\quad alface \quad \& \quad repolho \quad \& \quad cenoura \quad \& \quad beterraba \backslash \backslash \quad \backslash \mathtt{hline}$ \\
+$ovo \quad \& \quad bife \quad \& \quad queijo \quad \& \quad soja \backslash \backslash \quad \backslash \mathtt{hline}$ \\
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{tabular}\}$
+\end{flushleft}\item produz\\
+\vspace{0.5cm}
+\begin{tabular}{|c|c|l|r|}
+\hline
+arroz & feijao & lentilha & trigo  \\ \cline{3-4}
+alface & repolho & cenoura & beterraba \\ \hline 
+ovo & bife & queijo & soja  \\ \hline
+\end{tabular}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Tabelas: o ambiente tabular}
+\begin{itemizespc}
+\item Pode-se ajustar isoladamente a largura de uma coluna da tabela
+\begin{itemize}
+\item Comando $\mathtt{p}\{ \textrm{tamanho} \}$
+\end{itemize}
+\item Exemplo:
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{tabular}\}\{|c|\mathtt{p}\{ \mathtt{3cm} \}|l|r|\}$ \\
+$\backslash \mathtt{hline}$
+$\quad$ $\quad arroz \quad \& \quad feijao \quad \& \quad lentilha \quad \& \quad trigo \backslash \backslash \quad \backslash \mathtt{cline}\{ 3-4\}$
+$\quad$ $\quad alface \quad \& \quad repolho \quad \& \quad cenoura \quad \& \quad beterraba \backslash \backslash \quad \backslash \mathtt{hline}$ \\
+$ovo \quad \& \quad bife \quad \& \quad queijo \quad \& \quad soja \backslash \backslash \quad \backslash \mathtt{hline}$ \\
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{tabular}\}$
+\end{flushleft}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Tabelas: o ambiente tabular}
+\begin{itemizespc}
+\item Pode-se ajustar isoladamente a largura de uma coluna da tabela
+\begin{itemize}
+\item Comando $\mathtt{p}\{ \textrm{tamanho} \}$
+\end{itemize}
+\item Produz\\
+\vspace{0.5cm}
+\begin{tabular}{|c|p{3cm}|l|r|}
+\hline
+arroz & feijao & lentilha & trigo  \\ \cline{3-4}
+alface & repolho & cenoura & beterraba \\ \hline 
+ovo & bife & queijo & soja  \\ \hline
+\end{tabular}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Tabelas: o ambiente tabular}
+\begin{itemizespc}
+\item Para modelar uma célula pelo agrupamento de células vizinhas em uma linha, utiliza-se:
+\begin{itemize}
+\item Comando $\mathtt{multicolumn}\{ \mathtt{n}\}\{ \mathtt{pos}\}\{ \mathtt{item}\}$
+\item $n$ é o número de colunas da tabela inteira que a multi-coluna irá ocupar
+\item $pos$ se refere ao posicionamento do conteúdo
+\item $item$ é o conteúdo
+\end{itemize}
+\item Deve-se inserir o número de colunas original no parâmetro de {\tt tabular}.
+\item No parâmetro de {\texttt multicolumn}, deve-se mencionar se a coluna possui bordas ou não
+\end{itemizespc}
+}
+
+\frame{\frametitle{Tabelas: o ambiente tabular}
+\begin{itemizespc}
+\item Exemplo:
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{tabular}\}\{|c|cc|c|\}$ \\
+$\backslash \mathtt{hline}$
+$\quad$ $\quad comida \quad \& \backslash \{ \mathtt{multicolumn} \} \{ 3\} \{ \arrowvert c \arrowvert \} \{ outros\} \backslash \backslash \quad \backslash \mathtt{hline}$
+$\quad$ $\quad arroz \quad \& \quad feijao \quad \& \quad lentilha \quad \& \quad trigo \backslash \backslash \quad \backslash \mathtt{cline}\{ 3-4\}$
+$\quad$ $\quad alface \quad \& \quad repolho \quad \& \quad cenoura \quad \& \quad beterraba \backslash \backslash \quad \backslash \mathtt{hline}$ \\
+$ovo \quad \& \quad bife \quad \& \quad queijo \quad \& \quad soja \backslash \backslash \quad \backslash \mathtt{hline}$ \\
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{tabular}\}$
+\end{flushleft}
+\item Produz\\
+\vspace{0.5cm}
+\begin{tabular}{|c|cc|c|}
+\hline
+comida & \multicolumn{3}{|c|}{outros} \\ \hline
+arroz & feijao & lentilha & trigo  \\ \hline
+alface & repolho & cenoura & beterraba \\ \hline 
+ovo & bife & queijo & soja  \\ \hline
+\end{tabular}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Tabelas: o ambiente table}
+\begin{itemizespc}
+\item Com o ambiente {\texttt table}, o \LaTeX\ poderá trabalhar seu posicionamento e referenciamento.
+\item Para isso, basta inserir o ambiente {\texttt tabular} dentro de um ambiente {\texttt table}
+\item Inserir propriedades como legenda ({\texttt caption}) e label para referência no texto ({\texttt label})\\
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{table}\}[pos] $\\
+$\backslash \mathtt{begin}\{\mathtt{tabular}\}\{...\}$ \\
+$...$ \\
+$\backslash \mathtt{end}\{\mathtt{tabular}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{table}\}$
+\end{flushleft}
+\end{itemizespc}
+}
+
+
+\frame{\frametitle{Tabelas: o ambiente table}
+\begin{itemizespc}
+\item Formato geral de uma tabela
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{table}\}[pos] $\\
+$\backslash \mathtt{begin}\{\mathtt{tabular}\}\{...\}$ \\
+$...$ \\
+$\backslash \mathtt{end}\{\mathtt{tabular}\}$ \\
+$\backslash \mathtt{caption} \{ \textrm{Legenda da tabela} \}$ \\
+$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{table}\}$
+\end{flushleft}
+\item em que $pos$ pode ser:
+\begin{itemize}
+\item b - bottom (tabela ficará na parte de baixo da página)
+\item t - top (tabela ficará na parte de cima da página)
+\item h - here (tabela ficará onde digitada na página)
+\item p - (tabela ficará em parte separada)
+\end{itemize}
+\end{itemizespc}
+}
+
+
+\frame{\frametitle{Tabelas: o ambiente table}
+\begin{itemizespc}
+\item Exemplo:
+\begin{flushleft}
+$\backslash \mathtt{begin}\{\mathtt{table}\}[h] $\\
+$\backslash \mathtt{begin}\{\mathtt{tabular}\}\{|c|cc|c|\}$ \\
+$\backslash \mathtt{hline}$
+$\quad$ $\quad comida \quad \& \backslash \{ \mathtt{multicolumn} \} \{ 3\} \{ \arrowvert c \arrowvert \} \{ outros\} \backslash \backslash \quad \backslash \mathtt{hline}$
+$\quad$ $\quad arroz \quad \& \quad feijao \quad \& \quad lentilha \quad \& \quad trigo \backslash \backslash \quad \backslash \mathtt{cline}\{ 3-4\}$
+$\quad$ $\quad alface \quad \& \quad repolho \quad \& \quad cenoura \quad \& \quad beterraba \backslash \backslash \quad \backslash \mathtt{hline}$ \\
+$ovo \quad \& \quad bife \quad \& \quad queijo \quad \& \quad soja \backslash \backslash \quad \backslash \mathtt{hline}$ \\
+%$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{tabular}\}$
+$\backslash \mathtt{caption} \{ \textrm{Legenda da tabela} \}$ \\
+$\backslash \mathtt{label}\{\textrm{rotulo}\}$ \\
+$\backslash \mathtt{end}\{\mathtt{table}\}$
+\end{flushleft}
+\end{itemizespc}
+}
+
+\frame{\frametitle{Tabelas: o ambiente table}
+\begin{itemizespc}
+\item Produz a Tabela \ref{tab:alimentos} abaixo:
+\begin{flushleft}
+\begin{table}[h]
+\begin{tabular}{|c|cc|c|}
+\hline
+comida & \multicolumn{3}{|c|}{outros} \\ \hline
+arroz & feijao & lentilha & trigo  \\ \hline
+alface & repolho & cenoura & beterraba \\ \hline 
+ovo & bife & queijo & soja  \\ \hline
+\end{tabular}
+\caption{Alimentos disponíveis.}
+\label{tab:alimentos}
+\end{table}
+\end{flushleft}
+\end{itemizespc}
+}
+
+
+\frame{\frametitle{Próxima parte...}
+\begin{itemizespc}
+\item Na Parte 3:
+\begin{itemize}
+\item Formatação
+\item Organização estrutural
+\end{itemize}
+\item Imagens
+\item Ambiente matemático
+\begin{itemize}
+\item Funções
+\item Símbolos matemáticos
+\end{itemize}
+\item Tabelas
+\begin{itemize}
+\item Ambiente Tabular
+\end{itemize}
+\end{itemizespc}
+}
+
+%\begin{frame}{Como o \LaTeX funciona?}
+%\begin{itemize}
+%\item You write your document in \texttt{plain text} with \cmd{commands} that
+%describe its structure and meaning.
+%\item The \texttt{latex} program processes your text and commands to produce a
+%eautifully formatted document.
+%\end{itemize}
+%\vskip 2ex
+%\begin{center}
+%\begin{minted}[frame=single]{latex}
+%The rain in Spain falls \emph{mainly} on the plain.
+%\end{minted}
+%\vskip 2ex
+%\tikz\node[single arrow,fill=gray,font=\ttfamily\bfseries,%
+%  rotate=270,xshift=-1em]{latex};
+%\vskip 2ex
+%\fbox{The rain in Spain falls \emph{mainly} on the plain.}
+%\end{center}
+%\end{frame}
+
+%\frame{\frametitle{Bibliografia}
+%\begin{itemizespc} 
+%\item João Nunes de Souza, Lógica para Ciência da Computação, Campus SBC, Elsevier Brasil, 2a ed., 2008, 220 p.
+%\begin{figure}
+%\includegraphics[scale=0.5]{figs/book.png}
+%\end{figure}
+%\end{itemizespc}
+%}
+
+
+%\frame{\frametitle{Colors}
+
+%\textcolor{red}{Of course that you could color your text}
+%\textcolor{orange}{Of course that you could color your text}
+%\textcolor{blue}{Of course that you could color your text}
+%\textcolor{yellow}{Of course that you could color your text}
+%\textcolor{green}{Of course that you could color your text}
+
+%}
+%-------------------------------------
+
+%\frame{\frametitle{Formating}
+
+%\begin{center}
+%\sout{strikethrough}  \\
+%\textit{italic} \\
+%\textbf{bold} \\
+%\underline{underline}
+
+%\end{center}
+
+%}
+
+\end{document}
